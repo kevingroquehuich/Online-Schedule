@@ -1,12 +1,10 @@
 package com.approque.onlineschedule.authentication.signin
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Facebook
-import androidx.compose.material.icons.filled.LogoDev
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
@@ -23,7 +21,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.compose.ConstraintLayout
 import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.compose.*
 import com.approque.onlineschedule.R
@@ -34,7 +31,7 @@ fun SignInScreen() {
 
     val isPlaying by remember { mutableStateOf(true) }
     val speed by remember { mutableStateOf(1f) }
-    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.calendario))
+    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.schedule))
     val progress by animateLottieCompositionAsState(
         composition = composition,
         iterations = LottieConstants.IterateForever,
@@ -48,9 +45,7 @@ fun SignInScreen() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Header(composition, progress, modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.TopCenter))
+        Header(composition, progress, modifier = Modifier.fillMaxWidth().align(Alignment.TopCenter))
         Body(modifier = Modifier.align(Alignment.Center))
         Footter(modifier = Modifier.align(Alignment.BottomCenter))
     }
@@ -64,7 +59,7 @@ fun Header(composition: LottieComposition?, progress: Float, modifier: Modifier)
             composition = composition,
             progress = progress,
             modifier = Modifier
-                .size(150.dp)
+                .size(170.dp)
                 .align(Alignment.CenterHorizontally),
             contentScale = ContentScale.Crop
         )
@@ -76,7 +71,6 @@ fun Header(composition: LottieComposition?, progress: Float, modifier: Modifier)
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
-
 }
 
 @Composable
@@ -85,11 +79,11 @@ fun Body(modifier: Modifier) {
         Email(email = "", onTextChange = {})
         Spacer(modifier = Modifier.size(16.dp))
         Password(password = "", onTextChange = {})
-        Spacer(modifier = Modifier.size(12.dp))
+        Spacer(modifier = Modifier.size(16.dp))
         ForgotPassword(modifier = Modifier.align(Alignment.End))
         Spacer(modifier = Modifier.size(16.dp))
         LoginButton(true)
-        Spacer(modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.size(32.dp))
         LoginDivider()
         Spacer(modifier = Modifier.size(32.dp))
         SocialLogin()
